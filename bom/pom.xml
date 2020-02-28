@@ -25,11 +25,21 @@
   <name>Quarkus Qpid JMS - BOM</name>
 
   <properties>
+    <quarkus.version>1.2.1.Final</quarkus.version>
     <qpid-jms.version>0.48.0</qpid-jms.version>
   </properties>
 
   <dependencyManagement>
     <dependencies>
+
+      <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-bom</artifactId>
+        <version>${quarkus.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
       <dependency>
         <groupId>org.apache.qpid</groupId>
         <artifactId>qpid-jms-client</artifactId>
