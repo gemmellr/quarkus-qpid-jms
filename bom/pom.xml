@@ -32,6 +32,12 @@
   <dependencyManagement>
     <dependencies>
 
+      <dependency>
+        <groupId>org.apache.qpid</groupId>
+        <artifactId>proton-j</artifactId>
+        <version>0.33.5</version>
+      </dependency>
+
       <!-- Quarkus -->
 
       <dependency>
