@@ -33,9 +33,22 @@
     </license>
   </licenses>
 
+   <repositories>
+     <repository>
+       <id>snapshots-repo</id>
+         <url>https://repository.apache.org/content/repositories/snapshots</url>
+       <releases>
+         <enabled>false</enabled>
+       </releases>
+       <snapshots>
+         <enabled>true</enabled>
+       </snapshots>
+     </repository>
+  </repositories>
+
   <properties>
-    <quarkus-version>2.12.0.Final</quarkus-version>
-    <qpid-jms.version>1.6.0</qpid-jms.version>
+    <quarkus-version>2.13.0.CR1</quarkus-version>
+    <qpid-jms.version>1.7.0-SNAPSHOT</qpid-jms.version>
 
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
