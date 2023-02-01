@@ -50,14 +50,15 @@ import org.apache.qpid.jms.transports.netty.NettyWssTransportFactory;
 import org.apache.qpid.proton.engine.impl.TransportImpl;
 
 import io.quarkus.arc.deployment.AdditionalBeanBuildItem;
+import io.quarkus.bootstrap.classloading.QuarkusClassLoader;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
 import io.quarkus.deployment.builditem.CombinedIndexBuildItem;
 import io.quarkus.deployment.builditem.ExtensionSslNativeSupportBuildItem;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
+import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.RuntimeInitializedClassBuildItem;
-import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceBuildItem;
 
 public class QpidJmsProcessor {
     private static final String QPID_JMS = "qpid-jms";
@@ -154,8 +155,10 @@ public class QpidJmsProcessor {
         reflectiveClass.produce(new ReflectiveClassBuildItem(false, false, JmsNoOpTracerFactory.class.getName()));
         reflectiveClass.produce(new ReflectiveClassBuildItem(false, false, JmsNoOpTracer.class.getName()));
 
-        resource.produce(new NativeImageResourceBuildItem("META-INF/services/org/apache/qpid/jms/tracing/opentracing"));
-        reflectiveClass.produce(new ReflectiveClassBuildItem(false, false, OpenTracingTracerFactory.class.getName()));
-        reflectiveClass.produce(new ReflectiveClassBuildItem(false, false, OpenTracingTracer.class.getName()));
+        if (QuarkusClassLoader.isClassPresentAtRuntime("io.opentracing.util.GlobalTracer")) {
+            resource.produce(new NativeImageResourceBuildItem("META-INF/services/org/apache/qpid/jms/tracing/opentracing"));
+            reflectiveClass.produce(new ReflectiveClassBuildItem(false, false, OpenTracingTracerFactory.class.getName()));
+            reflectiveClass.produce(new ReflectiveClassBuildItem(false, false, OpenTracingTracer.class.getName()));
+        }
     }
 }
