@@ -35,16 +35,6 @@
 
    <repositories>
      <repository>
-       <id>staging-repo-artemis</id>
-         <url>https://repository.apache.org/content/repositories/orgapacheactivemq-1379</url>
-       <releases>
-         <enabled>true</enabled>
-       </releases>
-       <snapshots>
-         <enabled>false</enabled>
-       </snapshots>
-     </repository>
-     <repository>
        <id>staging-repo</id>
          <url>https://repository.apache.org/content/repositories/orgapacheqpid-1269</url>
        <releases>
