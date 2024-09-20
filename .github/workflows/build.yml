@@ -34,7 +34,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Build - JVM
-        run: mvn -B clean verify
+        run: mvn -B clean verify --update-snapshots
 
       - name: Build - Native (Default Builder Image)
         if: matrix.mandrel == 'default'
