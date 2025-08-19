@@ -33,9 +33,22 @@
     </license>
   </licenses>
 
+   <repositories>
+     <repository>
+       <id>staging-repo</id>
+       <url>https://repository.apache.org/content/repositories/orgapacheqpid-1289</url>
+       <releases>
+         <enabled>true</enabled>
+       </releases>
+       <snapshots>
+         <enabled>false</enabled>
+       </snapshots>
+     </repository>
+  </repositories>
+
   <properties>
-    <quarkus-version>2.16.7.Final</quarkus-version>
-    <qpid-jms.version>1.10.0</qpid-jms.version>
+    <quarkus-version>2.16.12.Final</quarkus-version>
+    <qpid-jms.version>1.14.0</qpid-jms.version>
 
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
